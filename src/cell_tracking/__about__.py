@@ -1,10 +1,10 @@
 """Project metadata."""
 
 __version__ = "0.1.0"
-__docs__ = "Minimal Kaggle competition helper package."
+__docs__ = "Biohub Cell Tracking During Development - Kaggle competition helpers."
 __author__ = "Jiri Borovec"
 __author_email__ = "6035284+Borda@users.noreply.github.com"
-__homepage__ = "https://github.com/Borda/kaggle_sandbox"
+__homepage__ = "https://github.com/Borda/kaggle_tracking"
 __license__ = "MIT"
 
 __all__ = [

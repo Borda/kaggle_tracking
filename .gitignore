@@ -144,4 +144,10 @@ mlruns/
 # JetBrains IDEs
 .idea/
 .junie/memory/
+
+# AI assistant tools
+.claude/state/
 .reports/
+memory/
+resources/competition/
+resources/competitors/

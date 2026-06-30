@@ -6,14 +6,16 @@ requires = [
 ]
 
 [project]
-name = "kaggle-sandbox"
+name = "biohub-cell-tracking"
 version = "0.1.0"
-description = "Minimal Kaggle competition project template."
+description = "Biohub Cell Tracking During Development - Kaggle competition helpers."
 readme = "README.md"
 keywords = [
+  "biology",
+  "cell-tracking",
   "kaggle",
-  "machine-learning",
-  "template",
+  "microscopy",
+  "zebrafish",
 ]
 license = "MIT"
 license-files = [
@@ -38,7 +40,9 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-dependencies = []
+dependencies = [
+  "numpy>=1.24",
+]
 optional-dependencies.kaggle = [
   "kaggle",
   "kagglehub",
@@ -46,7 +50,14 @@ optional-dependencies.kaggle = [
 optional-dependencies.ml = [
   "torch>=2.8",
 ]
-urls."Source Code" = "https://github.com/Borda/kaggle_sandbox"
+optional-dependencies.tracking = [
+  "geff",
+  "motile",
+  "scikit-image>=0.21",
+  "scipy>=1.11",
+  "zarr>=3",
+]
+urls."Source Code" = "https://github.com/Borda/kaggle_tracking"
 
 [dependency-groups]
 dev = [
@@ -71,6 +82,9 @@ packages.find.where = [
 [tool.ruff]
 target-version = "py310"
 line-length = 120
+exclude = [
+  "notebooks/",
+]
 format.preview = true
 lint.select = [
   "D",  # see: https://pypi.org/project/pydocstyle
@@ -149,7 +163,7 @@ ini_options.junit_duration_report = "call"
 
 [tool.coverage]
 run.source = [
-  "challenge_xyz",
+  "cell_tracking",
 ]
 report.exclude_lines = [
   "pass",
