@@ -1,0 +1,18 @@
+# Inactive CODEOWNERS template.
+#
+# Forks that want GitHub review-owner routing should rename this file to:
+#   .github/CODEOWNERS
+
+# Default owner for this template.
+*                       @borda
+
+# CI/CD and project configuration.
+/.github/               @borda
+*.yml                   @borda
+*.yaml                  @borda
+pyproject.toml          @borda
+
+# Docs and examples.
+/README.md              @borda
+/notebooks/             @borda
+/resources/             @borda

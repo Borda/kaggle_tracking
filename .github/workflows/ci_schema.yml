@@ -1,0 +1,37 @@
+name: CI action schema
+on:
+  push: {}
+  pull_request:
+    branches: [main]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  validate-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
+
+      - name: Scan repo
+        id: folders
+        run: python -c "import os; print('gh_actions=' + str(int(os.path.isdir('.github/actions'))))" >> $GITHUB_OUTPUT
+
+      # https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-workflow.json
+      - name: GitHub Actions - workflow
+        run: |
+          files=$(find .github/workflows -name '*.yml' -or -name '*.yaml' -not -name '__*')
+          uvx check-jsonschema -v $files --builtin-schema "github-workflows"
+
+      # https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-action.json
+      - name: GitHub Actions - action
+        if: steps.folders.outputs.gh_actions == '1'
+        run: |
+          files=$(find .github/actions -name '*.yml' -or -name '*.yaml')
+          uvx check-jsonschema -v $files --builtin-schema "github-actions"
