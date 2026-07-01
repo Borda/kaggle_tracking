@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6.3.0
         with:
-          python-version: "3.10"
+          python-version: "3.11"
       - uses: astral-sh/setup-uv@v8.2.0
         with:
           enable-cache: true
@@ -41,7 +41,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macOS-latest", "windows-latest"]
-        python-version: ["3.10"]
+        python-version: ["3.11"]
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6.3.0
@@ -57,10 +57,10 @@ jobs:
       - name: Try installing
         run: |
           uv run --with "$(python -c 'import glob; print(glob.glob("dist/*.whl")[0])')" \
-            python -c "import challenge_xyz; print(challenge_xyz.__version__)"
+            python -c "import cell_tracking; print(cell_tracking.__version__)"
 
       - name: Try editable install
-        run: uv run --with-editable . python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
+        run: uv run --with-editable . python -c "import cell_tracking ;  print(cell_tracking.__version__)"
 
   watcher:
     runs-on: ubuntu-latest

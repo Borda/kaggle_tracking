@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macOS-latest", "windows-latest"]
-        python-version: ["3.10", "3.11", "3.12"]
+        python-version: ["3.11", "3.12"]
     # Timeout: https://stackoverflow.com/a/59076067/4521646
     timeout-minutes: 25
 
@@ -36,7 +36,7 @@ jobs:
           enable-cache: true
 
       - name: Tests
-        run: uv run --group test pytest . -v --cov=challenge_xyz
+        run: uv run --group test pytest . -v --cov=cell_tracking
 
       - name: Statistics
         run: |

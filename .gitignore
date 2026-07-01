@@ -147,7 +147,9 @@ mlruns/
 
 # AI assistant tools
 .claude/state/
+.plans/
 .reports/
+.temp/
 memory/
 resources/competition/
 resources/competitors/

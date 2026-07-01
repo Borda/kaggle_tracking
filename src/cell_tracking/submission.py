@@ -126,9 +126,8 @@ def validate_submission(path: str | Path) -> dict[str, int]:
         >>> with tempfile.TemporaryDirectory() as tmp:
         ...     out = Path(tmp) / "submission.csv"
         ...     n = NodeRow(dataset="44b6", node_id=1, t=0, z=32, y=128, x=128)
-        ...     build_submission([n], [], out)  # doctest: +ELLIPSIS
+        ...     _ = build_submission([n], [], out)
         ...     validate_submission(out)["node_rows"]
-        PosixPath(...)
         1
     """
     csv_path = Path(path)
